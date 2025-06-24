@@ -22,9 +22,5 @@ jobs:
       - name: Install ESLint
         run: npm install eslint --save-dev
 
-      - name: Initialize ESLint config
-        run: npx eslint --init
-        if: false  # only for first-time setup
-
       - name: Run ESLint on script.js
         run: npx eslint script.js || exit 1

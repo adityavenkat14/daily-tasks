@@ -1,0 +1,9 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+li.done {
+  text-decoration: line-through;
+  color: gray;
+}

@@ -1,14 +1,12 @@
-export default [
-  {
-    files: ["**/*.js"],
-    languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-    },
-    rules: {
-      semi: "error",
-      "no-unused-vars": "warn",
-      "no-console": "warn",
-    },
+{
+  "env": {
+    "browser": true,
+    "es2021": true
   },
-];
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {}
+}

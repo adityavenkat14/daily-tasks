@@ -1,56 +1,9 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: sans-serif;
   padding: 20px;
-}
-
-h1 {
-  margin-bottom: 10px;
-}
-
-.task-input {
-  margin-bottom: 20px;
-}
-
-input[type="text"] {
-  padding: 8px;
-  width: 250px;
-  font-size: 16px;
-}
-
-button {
-  padding: 8px 12px;
-  font-size: 16px;
-  margin-left: 10px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  padding: 12px;
-  background-color: #f2f2f2;
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 li.done {
   text-decoration: line-through;
   color: gray;
-}
-
-li button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 5px 8px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-li button:hover {
-  background-color: #45a049;
 }

@@ -21,7 +21,7 @@ jobs:
       - name: Upload static files
         uses: actions/upload-pages-artifact@v2
         with:
-          path: '.'  # Make sure index.html is in the root
+          path: '.'  # This must match the folder where index.html is
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2

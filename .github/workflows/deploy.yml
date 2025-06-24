@@ -2,7 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -26,7 +27,7 @@ jobs:
       - name: Upload static site
         uses: actions/upload-pages-artifact@v2
         with:
-          path: '.'  # Change this if your index.html is in a folder
+          path: '.'  # Change this to './public' or './dist' if your files are inside a folder
 
       - name: Deploy to GitHub Pages
         id: deploy

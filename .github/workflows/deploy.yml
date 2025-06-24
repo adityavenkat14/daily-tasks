@@ -21,13 +21,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v3
 
-      - name: Upload static site
+      - name: Upload static files
         uses: actions/upload-pages-artifact@v2
         with:
-          path: '.'  # folder with index.html
+          path: '.'  # Make sure your index.html is in root or change this path accordingly
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -2,33 +2,40 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 permissions:
   contents: write
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '.'  # update if your site files are in ./dist or ./public
+
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v3
-
-      - name: Upload static site
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: '.'  # Change this to './public' or './dist' if your files are inside a folder
-
       - name: Deploy to GitHub Pages
         id: deploy
         uses: actions/deploy-pages@v2

@@ -18,16 +18,16 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4  # ✅ v4, latest
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v3  # ✅ Official, v3 is safe here
 
-      - name: Upload site files
-        uses: actions/upload-pages-artifact@v2
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v2  # ✅ For deploying Pages
         with:
-          path: '.'  # Make sure index.html is in the root
+          path: '.'  # or './public' if your site files are in a folder
 
       - name: Deploy to GitHub Pages
         id: deploy
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v2  # ✅ Latest stable deployment step

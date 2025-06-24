@@ -59,7 +59,8 @@
 
     li.appendChild(checkbox);
     li.appendChild(taskText);
-    taskList.appendChild(li);
+    taskList.insertBefore(li, taskList.firstChild);
+
   }
 </script>
 

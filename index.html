@@ -1,52 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Daily Task List</title>
-  <style>
-    body { font-family: Arial; padding: 20px; }
-    input, button { margin: 10px 0; padding: 10px; }
-    ul { padding: 0; list-style: none; }
-    li { background: #f0f0f0; padding: 8px; margin-bottom: 5px; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Tasks</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>My Tasks for Today</h1>
-  
-  <input type="text" id="taskInput" placeholder="Enter a task" />
-  <button onclick="addTask()">Add Task</button>
-
+  <div class="task-input">
+    <input type="text" id="taskInput" placeholder="Enter a task" />
+    <button onclick="addTask()">Add Task</button>
+  </div>
   <ul id="taskList"></ul>
 
-  <script>
-    const taskInput = document.getElementById('taskInput');
-    const taskList = document.getElementById('taskList');
-
-    // Load saved tasks from localStorage
-    window.onload = () => {
-      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-      tasks.forEach(task => addTaskToUI(task));
-    };
-
-    function addTask() {
-      const task = taskInput.value.trim();
-      if (task === '') return;
-
-      // Add task to UI
-      addTaskToUI(task);
-
-      // Save to localStorage
-      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-      tasks.push(task);
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-
-      taskInput.value = '';
-    }
-
-    function addTaskToUI(task) {
-      const li = document.createElement('li');
-      li.textContent = task;
-      taskList.appendChild(li);
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

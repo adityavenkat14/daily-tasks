@@ -1,0 +1,30 @@
+name: Run CI Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-js:
+    runs-on: ubuntu-latest
+    name: JavaScript Linting
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install ESLint
+        run: npm install eslint --save-dev
+
+      - name: Initialize ESLint config
+        run: npx eslint --init
+        if: false  # only for first-time setup
+
+      - name: Run ESLint on script.js
+        run: npx eslint script.js || exit 1

@@ -3,6 +3,7 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 function addTask() {
   const taskInput = document.getElementById("taskInput");
   const taskText = taskInput.value.trim();
+
   if (taskText !== "") {
     tasks.push({ text: taskText, done: false });
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -29,16 +30,49 @@ function renderTasks() {
 
   tasks.forEach((task, index) => {
     const li = document.createElement("li");
-    li.className = task.done ? "done" : "";
+    li.style.display = "flex";
+    li.style.alignItems = "center";
+    li.style.justifyContent = "space-between";
+    li.style.padding = "10px";
+    li.style.marginBottom = "5px";
+    li.style.backgroundColor = "#f0f0f0";
 
-    li.innerHTML = `
-      <input type="checkbox" ${task.done ? "checked" : ""} onchange="toggleTask(${index})">
-      <span style="margin-left: 8px; ${task.done ? 'text-decoration: line-through; color: gray;' : ''}">${task.text}</span>
-      <button onclick="deleteTask(${index})" style="float:right; background-color:red; color:white; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;">Delete</button>
-    `;
+    const left = document.createElement("div");
+    left.style.display = "flex";
+    left.style.alignItems = "center";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = task.done;
+    checkbox.addEventListener("change", () => toggleTask(index));
+
+    const span = document.createElement("span");
+    span.textContent = task.text;
+    span.style.marginLeft = "10px";
+    if (task.done) {
+      span.style.textDecoration = "line-through";
+      span.style.color = "gray";
+    }
+
+    left.appendChild(checkbox);
+    left.appendChild(span);
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.style.backgroundColor = "red";
+    deleteBtn.style.color = "white";
+    deleteBtn.style.border = "none";
+    deleteBtn.style.padding = "5px 10px";
+    deleteBtn.style.borderRadius = "5px";
+    deleteBtn.style.cursor = "pointer";
+    deleteBtn.addEventListener("click", () => deleteTask(index));
+
+    li.appendChild(left);
+    li.appendChild(deleteBtn);
 
     taskList.appendChild(li);
   });
 }
 
+// Initial render
 renderTasks();

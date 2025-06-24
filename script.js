@@ -1,11 +1,23 @@
-function addTask() {
-  const input = document.getElementById("taskInput");
-  const task = input.value.trim();
-  if (task) {
+function renderTasks() {
+  const taskList = document.getElementById("taskList");
+  taskList.innerHTML = "";
+
+  tasks.forEach((task, index) => {
+    if (typeof task.text !== "string") return;
+
     const li = document.createElement("li");
-    li.textContent = task;
-    li.onclick = () => li.classList.toggle("done");
-    document.getElementById("taskList").appendChild(li);
-    input.value = "";
-  }
+    li.className = task.done ? "done" : "";
+
+    li.innerHTML = `
+      ${task.text}
+      <button onclick="toggleTask(${index})">
+        ${task.done ? "Undo" : "Done"}
+      </button>
+      <button onclick="deleteTask(${index})" style="margin-left:10px; background-color: red; color: white;">
+        Delete
+      </button>
+    `;
+
+    taskList.appendChild(li);
+  });
 }

@@ -1,12 +1,16 @@
-{
-  "env": {
-    "browser": true,
-    "es2021": true
+
+export default [
+  {
+    files: ["**/*.js"],
+    languageOptions: {
+      ecmaVersion: 12,
+      sourceType: "module",
+    },
+    linterOptions: {
+      reportUnusedDisableDirectives: true,
+    },
+    rules: {
+      // add your rules here if needed
+    },
   },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "rules": {}
-}
+];
